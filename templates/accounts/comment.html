@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="section-conten padding-y bg">
+    <div class="container">
+        {% include "includes/alerts.html" %}
+        <div class="row">
+            <div class="col-md-3">
+                {% include "accounts/user_panel.html" %}
+            </div>
+            <div class="col-md-9">
+                <div class="order-summary clearfix">
+                    <div class="section-title">
+                        <h3 class="title">Bình luận của tôi</h3>
+                    </div>
+                    <table class="shopping-cart-table table">
+                        <tr>
+                            <th class="text-left">Sản Phẩm </th>
+                            <th class="text-left">Sao </th>
+                            <th class="text-left">Vấn đề </th>
+                            <th class="text-left">Bình luận </th>
+                            <th class="text-left">Ngày gửi </th>
+                            <th class="text-left">Chi tiết </th>
+                        </tr>
+                        {% for review in reviews %}
+                            <tr>
+                                <td class="text-left">
+                                    <strong> {{ review.product }} </strong>
+                                </td>
+                                <td class="text-left">{{ review.rating }}</td>
+                                <td class="text-left">{{ review.subject }} </td>
+                                <td class="text-left">{{ review.review }} </td>
+                                <td class="text-left"> {{ review.updated_at }}</td>
+                                <td class="text-left">
+                                    <a href="#"
+										class="btn btn-info" onclick="return confirm('Bạn chắc chắn muốn xóa bình luận?')">Xóa</a>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{% endblock %}

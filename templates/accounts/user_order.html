@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="section-conten padding-y bg">
+    <div class="container">
+        {% include "includes/alerts.html" %}
+        <div class="row">
+            <div class="col-md-3">
+                {% include "accounts/user_panel.html" %}
+            </div>
+            <div class="col-md-9">
+                <div class="order-summary clearfix">
+                    <div class="section-title">
+                        <h3 class="title">Danh sách đơn hàng</h3>
+                    </div>
+                    <table class="shopping-cart-table table">
+                        <tr>
+                            <th class="text-left">Id </th>
+                            <th class="text-left">Họ </th>
+                            <th class="text-left">Tên </th>
+                            <th class="text-left">Giá </th>
+                            <th class="text-left">Tình trạng </th>
+                            <th class="text-left">Ngày </th>
+                            <th class="text-left">Chi tiết</th>
+                        </tr>
+                        {% for item in ordered_products %}
+                        <tr>
+                            <td class="text-left"> {{ item.product.product_name }} </td>
+                            <td class="text-left"></td>
+                            <td class="text-left"></td>
+                            <td class="text-left"></td>
+                            <td class="text-left"> </td>
+                            <td class="text-left"> </td>
+                            <td class="text-left"><a class="primary-btn" href="/user/orderdetail/{{ rs.id }}"> Chi tiết </a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

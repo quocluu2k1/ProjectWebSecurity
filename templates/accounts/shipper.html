@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="section-conten padding-y bg">
+    <div class="container">
+        <h2>Đăng kí trở thành người giao hàng</h2>
+        <p>Bạn hãy cung cấp thông tin chính xác và đầy đủ để có thể xác thực danh tính</p>
+        <form action="/action_page.php" class="was-validated">
+            <div class="form-group">
+                <label for="cccd">CMND/CCCD</label>
+                <input type="text" class="form-control" id="cccd" placeholder="Nhập số CMND hoặc CCCD" name="cccd" required>
+                <div class="valid-feedback">OK.</div>
+                <div class="invalid-feedback">Vui lòng nhập đầy đủ trường này.</div>
+            </div>
+            <div class="form-group">
+                <label for="address">Địa chỉ thường trú:</label>
+                <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ của bạn" name="address" required>
+                <div class="valid-feedback">OK.</div>
+                <div class="invalid-feedback">Vui lòng nhập đầy đủ trường này.</div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember" required> Tôi chấp nhận với điều khoản đề ra.
+              <div class="invalid-feedback">Check để tiếp tục.</div>
+            </label>
+            </div>
+
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Đăng kí
+          </button>
+
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thông báo</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body">
+                            Bạn đã đăng kí thành công
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+
+</section>
+{% endblock %}

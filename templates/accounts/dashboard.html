@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="section-conten padding-y bg">
+    <div class="container">
+        {% include "includes/alerts.html" %}
+        <div class="row">
+            <div class="col-md-3">
+                {% include "accounts/user_panel.html" %}
+            </div>
+            <div class="col-md-9">
+                <article class="card">
+                    <div class="card-body">
+                        <h2>Thông tin người dùng</h2>
+                                <table class="table table-bordered">                           
+                                    <thead>
+                                        <tr>
+                                            <th>Họ tên</th>
+                                            <td>{{ user.last_name }} {{ user.first_name }} </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Email</th>
+                                            <td>{{ user.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Số điện thoại</th>
+                                            <td>{{ user.phone_number }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <div class="update">
+                                <button type="button" class="btn btn-outline-info" ><a href="{% url 'user_update' %}">Cập nhập thông tin</a></button>
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

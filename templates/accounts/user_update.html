@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="section-conten padding-y bg">
+    <div class="container">
+        {% include "includes/alerts.html" %}
+        <div class="row">
+            <div class="col-md-3">
+                {% include "accounts/user_panel.html" %}
+            </div>
+            <div class="col-md-9">
+                <div class="order-summary clearfix">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">Cập nhật thông tin</h3>
+                        </div>
+                    </div>
+                    <table class="table table-bordered">                            
+                        <thead>
+                            <tr>
+                                <th>Họ tên</th>
+                                <td>{{ user.last_name }} {{ user.first_name }} </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Số điện thoại</th>
+                                <td>{{ user.phone_number }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        <div class="form-group">
+                            <button class="primary-btn" type="submit">Cập nhật</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

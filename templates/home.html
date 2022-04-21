@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="section-intro padding-y-sm">
+    <div class="container">
+        <div class="intro-banner-wrap">
+            {% include "includes/alerts.html" %}
+        </div>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static './images/tieude4.jpg' %}" alt="slide1" width="1200" height="400">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static './images/tieude2.jpg' %}" alt="slide2" width="1200" height="400">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static './images/tieude3.jpg' %}" alt="slide3" width="1200" height="400">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="section-name padding-y-sm">
+    <div class="container">
+        <header class="section-heading">
+            <a href="{% url 'store' %}" class="btn btn-outline-primary float-right">Xem tất cả</a>
+            <h3 class="section-title">Sản phẩm nổi bật</h3>
+        </header>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3">
+                <div class="card card-product-grid">
+                    <a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
+                    <figcaption class="info-wrap">
+                        <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+                        <div class="price mt-1">{{ product.price }}.000 vnđ</div>
+
+                    </figcaption>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container">
+        <header class="section-heading">
+            <a href="{% url 'store' %}" class="btn btn-outline-primary float-right">Xem tất cả</a>
+            <h3 class="section-title">Sản phẩm gần khu vực của bạn</h3>
+        </header>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3">
+                <div class="card card-product-grid">
+                    <a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
+                    <figcaption class="info-wrap">
+                        <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+                        <div class="price mt-1">{{ product.price }}.000 vnđ</div>
+                    </figcaption>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

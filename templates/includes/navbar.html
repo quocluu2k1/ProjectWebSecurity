@@ -1,0 +1,73 @@
+{% load static %}
+
+<header class="section-header">
+    <section class="header-main border-bottom bg-dark text-white">
+        <div class="container ">
+            <div class="row align-items-center ">
+                <div class="col-lg-2 col-md-3 col-6">
+                    <a href="{% url 'home' %}" class="brand-wrap">
+                        <img class="logo" src="{% static './images/CovidMart.png' %}">
+                    </a>
+                </div>
+                <div class="col-lg col-sm col-md col-6 flex-grow-0">
+                    <div class="category-wrap dropdown d-inline-block float-right">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bars"></i> Danh mục sản phẩm
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'store' %}">Tất cả sản phẩm</a> {% for category in links %}
+                            <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }}</a> {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <a href="https://bando.tphcm.gov.vn/ogis" class="btn btn-outline-info">Covidmap</a>
+                <div class="col-lg  col-md-6 col-sm-12 col">
+                    <form action="{% url 'search' %}" class="search" method="GET">
+                        <div class="input-group w-100">
+                            <input type="text" class="form-control" style="width:60%;" placeholder="Tìm kiếm" name="q" value="{{ q }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+                    <div class="d-flex justify-content-end mb-3 mb-lg-0">
+                        <div>
+                            <a href="{% url 'cart' %}" class="widget-header pr-4 ">
+                                <div class="icon icon-sm "><i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <span class="badge badge-pill badge-danger notify">{{ cart_count }}</span>
+                            </a>
+                        </div>
+                        {% if user.id is None %}
+                        <div class=" widget-header pr-4">
+                            <small class="title text-white">Chào mừng bạn!</small>
+                            <div>
+                                <a href="{% url 'login' %}" style="color: white;">Đăng nhập</a> <span class="light-transp"> | </span>
+                                <a href="{% url 'register' %} " style="color: white;"> Đăng ký</a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="widget-header pr-4">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-nooutline-info text-white dropdown-toggle" data-toggle="dropdown">
+                                    <strong class="text-uppercase">{{ user.first_name }}</strong>
+                                </button>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="{% url 'dashboard' %}"><i class="fa fa-user-o"></i> Tài Khoản</a>
+                                  <a class="dropdown-item" href="{% url 'cart' %}"><i class="fa fa-exchange"></i> Đơn hàng</a>
+                                  <a class="dropdown-item" href="{% url 'comment' %}"><i class="fa fa-check"></i> Bình luận</a>
+                                  <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Đăng xuất</a>
+                                </div>
+                              </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
